@@ -1,3 +1,4 @@
+const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 
 // Set up a config file
