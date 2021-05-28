@@ -4,7 +4,7 @@ const postData = [
     {
         title: 'ItsEvdok',
         post_url: 'filler url',
-        used_id: 1
+        user_id: 1
     }
 ];
 
