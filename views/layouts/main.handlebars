@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StayBuzzin</title>
+  <img src="https://img.icons8.com/flat-round/64/000000/bee--v1.png"/>
+  <link rel="stylesheet" href="/public/stylesheet/style.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <h1>
+        <a href="/"><img src="https://img.icons8.com/flat-round/64/000000/bee--v1.png"/></a>
+      </h1>
+      <nav>
+        {{#if loggedIn}}
+        <a href="/dashboard">Dashboard</a>
+        <a href="/profile">Profile</a>
+        <button id="logout" class="btn-no-style">Logout</button>
+        {{else}}
+        <a href="/login">Login</a>
+        {{/if}}
+      </nav>
+
+    </header>
+    <main>
+      {{{ body }}}
+    </main>
+    <footer>
+      <small>&copy; Copyright 2021, StayBuzzin</small>
+      <a href="https://icons8.com/icon/80986/bee">Icons by Icons8</a>
+    </footer>
+  </div>
+  {{#if loggedIn}}
+  <script src="/public/javascript/logout.js"></script>
+  {{/if}}
+</body>
+
+</html>
