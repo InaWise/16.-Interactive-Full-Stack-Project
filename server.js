@@ -1,9 +1,13 @@
-const sequelize = require("./config/connection");
-const express = require("express");
-const routes = require("./controllers");
-const path = require("path");
-
+const exphbs = require("express-handlebars");
+const express =  require('express');
 const session = require("express-session");
+const path = require("path");
+const sequelize = require('./config/connection');
+const routes = require('./controllers');
+const helpers = require('./utils/helpers');
+
+const app = express();
+// const PORT = process.env.PORT || 3001;
 
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
@@ -17,16 +21,7 @@ const sess = {
   }),
 };
 
-const app = express();
-const PORT = process.env.PORT || 3001;
-
 app.use(session(sess));
-
-const exphbs = require("express-handlebars");
-const hbs = exphbs.create({ helpers });
-
-app.engine("handlebars", hbs.engine);
-app.set("view engine", "handlebars");
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
@@ -35,7 +30,12 @@ app.use(express.urlencoded({ extended: true }));
 // Turn on the routes
 app.use(routes);
 
+const hbs = exphbs.create({ helpers });
+
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
+
 // sync sequelize models to the database, then turn on the server
-sequelize.sync({ force: true }).then(() => {
-  app.listen(PORT, () => console.log("Now listening"));
+sequelize.sync({force: false}).then(() => {
+  app.listen(process.env.PORT || 3001, () => console.log("Express server listening!"));
 });
