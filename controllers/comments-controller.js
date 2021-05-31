@@ -24,9 +24,6 @@ router.post('/', (req, res) => {
     });
 });
 
-//UPVOTE DOWNVOTE ?
-
-
 
 router.delete('/:id', (req, res) => {
     Comment.destroy({
