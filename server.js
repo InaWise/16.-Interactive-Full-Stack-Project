@@ -3,8 +3,8 @@ const express =  require('express');
 const session = require("express-session");
 const path = require("path");
 const sequelize = require('./config/connection');
-const routes = require('./controllers');
-const helpers = require('./utils/helpers');
+const routes = require('./controllers/index-controller');
+// const helpers = require('./utils/helpers');
 
 const app = express();
 // const PORT = process.env.PORT || 3001;
@@ -30,10 +30,10 @@ app.use(express.urlencoded({ extended: true }));
 // Turn on the routes
 app.use(routes);
 
-const hbs = exphbs.create({ helpers });
+// const hbs = exphbs.create({ helpers });
 
-app.engine("handlebars", hbs.engine);
-app.set("view engine", "handlebars");
+// app.engine("handlebars", hbs.engine);
+// app.set("view engine", "handlebars");
 
 // sync sequelize models to the database, then turn on the server
 sequelize.sync({force: false}).then(() => {
