@@ -3,7 +3,7 @@ const { Post } = require('../models');
 const postData = [
     {
         title: 'ItsEvdok',
-        post_url: 'filler url',
+        content: 'Just seeded!',
         user_id: 1
     }
 ];
