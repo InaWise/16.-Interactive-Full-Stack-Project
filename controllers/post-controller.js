@@ -7,11 +7,9 @@ const { Post, User, Comment, Vote } = require('../../models');
     Post.findAll({
         attributes: [
         'id',
-        'post_url',
+        '//content//',
         'title',
         'created_at',
-        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
-        ],
         include: [
         {
             model: Comment,
@@ -41,11 +39,9 @@ const { Post, User, Comment, Vote } = require('../../models');
         },
         attributes: [
         'id',
-        'post_url',
+        '//content//',
         'title',
         'created_at',
-        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
-        ],
         include: [
         {
             model: Comment,
@@ -78,7 +74,7 @@ const { Post, User, Comment, Vote } = require('../../models');
         
     Post.create({
         title: req.body.title,
-        post_url: req.body.post_url,
+        content: req.body.content,
         user_id: req.session.user_id
     })
         .then(dbPostData => res.json(dbPostData))
@@ -90,13 +86,13 @@ const { Post, User, Comment, Vote } = require('../../models');
 
     router.put('/upvote', (req, res) => {
 
-    Post.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
+    /*Post.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
         .then(updatedVoteData => res.json(updatedVoteData))
         .catch(err => {
         console.log(err);
         res.status(500).json(err);
         });
-    });
+    })*/
 
     router.put('/:id', (req, res) => {
     Post.update(
