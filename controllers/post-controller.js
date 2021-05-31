@@ -4,7 +4,6 @@ const { Post, User, Comment, Vote } = require('../../models');
 
 // get all users
     router.get('/', (req, res) => {
-    console.log('======================');
     Post.findAll({
         attributes: [
         'id',
@@ -76,7 +75,7 @@ const { Post, User, Comment, Vote } = require('../../models');
     });
 
     router.post('/', (req, res) => {
-    // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
+        
     Post.create({
         title: req.body.title,
         post_url: req.body.post_url,
@@ -90,7 +89,7 @@ const { Post, User, Comment, Vote } = require('../../models');
     });
 
     router.put('/upvote', (req, res) => {
-    // custom static method created in models/Post.js
+
     Post.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
         .then(updatedVoteData => res.json(updatedVoteData))
         .catch(err => {
