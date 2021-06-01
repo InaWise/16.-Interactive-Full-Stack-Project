@@ -1,5 +1,6 @@
 <form class="login-form">
-  <img class="mb-4" src="https://img.icons8.com/flat-round/64/000000/bee--v1.png" alt="Bumble Bee" width="64" height="64">
+  <img class="mb-4" src="https://img.icons8.com/flat-round/64/000000/bee--v1.png" alt="Bumble Bee" width="64"
+    height="64">
   <h1 class="h3 mb-3 fw-normal">Please Sign In</h1>
 
   <div class="form-floating">
@@ -16,11 +17,14 @@
       <input type="checkbox" value="remember-me"> Remember me
     </label>
   </div>
-  <button class="w-100 btn btn-lg btn-primary" type="submit">Sign In</button>
-</form>
 
-<a href="/signup">
-  <button class="w-100 btn btn-lg btn-primary" type="submit" id="signup-button">Sign Up Instead</button>
-</a>
+  <div class="d-grid gap-2 col-6 mx-auto">
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign In</button>
+    <a href="/signup">
+      <button class="w-100 btn btn-lg btn-primary" type="button">Sign Up Instead</button>
+    </a>
+  </div>
+  
+</form>
 
 <script src="/javascript/login.js"></script>
