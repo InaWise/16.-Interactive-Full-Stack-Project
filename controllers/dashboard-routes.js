@@ -5,6 +5,7 @@ const { User, Post, Comment } = require("../models");
 
 // Get all posts for the Dashboard
 router.get("/", withAuth, (req, res) => {
+  console.log(req.session, "dashboard");
   Post.findAll({
     where: {
       user_id: req.session.user_id,

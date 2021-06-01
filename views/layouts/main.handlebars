@@ -19,15 +19,17 @@
           <nav class="nav flex-column">
             <div class="container">
               <a class="navbar-brand" href="/">
-                <img src="https://img.icons8.com/flat-round/64/000000/bee--v1.png" alt="Bumble Bee" width="40" height="40">
+                <img src="https://img.icons8.com/flat-round/64/000000/bee--v1.png" alt="Bumble Bee" width="40"
+                  height="40">
               </a>
             </div>
+            {{#unless loggedIn}}
+            <a href="/login">Login</a>
+            {{/unless}}
             {{#if loggedIn}}
             <a href="/dashboard">Dashboard</a>
             <a href="/profile">Profile</a>
             <button id="logout" class="btn-no-style">Logout</button>
-            {{else}}
-            <a href="/login">Login</a>
             {{/if}}
           </nav>
         </header>
@@ -39,9 +41,11 @@
         </main>
       </div>
 
-      <footer>
-        <small>&copy; Copyright 2021, StayBuzzin</small>
-        <a href="https://icons8.com/icon/80986/bee">Icons by Icons8</a>
+      <footer class="footer mt-auto py-3 bg-light">
+        <div class="container-footer">
+          <small>&copy; Copyright 2021, StayBuzzin</small>
+          <a href="https://icons8.com/icon/80986/bee">Icons by Icons8</a>
+        </div>
       </footer>
     </div>
 

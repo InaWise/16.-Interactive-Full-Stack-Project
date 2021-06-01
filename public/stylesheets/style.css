@@ -57,12 +57,31 @@ textarea {
     min-height: 100px;
 }
 
-form>div {
-    margin-bottom: 2%;
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
 }
 
-form label {
-    display: block;
+.form-signin .checkbox {
+    font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 header {
@@ -80,6 +99,7 @@ header h1 {
 main {
     flex: 1;
     padding: 2% 4%;
+    border: 1px solid gray;
 }
 
 .btn-no-style {
@@ -160,10 +180,12 @@ main {
     margin-bottom: 5%;
 }
 
-footer {
-    border-top: 1px solid #ccc;
-    display: flex;
-    justify-content: space-between;
-    padding: 1%;
-    font-size: 110%;
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: black;
+    text-align: center;
 }

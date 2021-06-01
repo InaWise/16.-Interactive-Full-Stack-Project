@@ -5,8 +5,10 @@ async function logout() {
     });
 
     if(response.ok) {
-        document.location.replace('/');
+        window.location.replace("/");
     } else {
+        const t = await(response.json());
+        console.log(t, " logout script ");
         alert(response.statusText);
     }
 }

@@ -78,7 +78,7 @@ router.post('/login', (req, res) => {
     }
   }).then(dbUserData => {
     if (!dbUserData) {
-      res.status(400).json({ message: 'No user with that email address!' });
+      res.status(400).json({ message: 'No user found!' });
       return;
     }
 
@@ -95,7 +95,8 @@ router.post('/login', (req, res) => {
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
 
-      res.status(200).json({ user: dbUserData, message: "You are now logged in!" });
+      console.log(req.session, 'api login');
+      return res.status(200).json({ user: dbUserData, message: "You are now logged in!" });
     });
   })
   .catch(err => {
@@ -106,6 +107,7 @@ router.post('/login', (req, res) => {
 
 // logout route
 router.post("/logout", (req, res) => {
+  console.log(req, "logout request");
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
