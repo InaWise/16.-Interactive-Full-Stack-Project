@@ -19,8 +19,8 @@
           <nav class="nav flex-column">
             <div class="container">
               <a class="navbar-brand" href="/">
-                <img src="https://img.icons8.com/flat-round/64/000000/bee--v1.png" alt="Bumble Bee" width="40"
-                  height="40">
+                <img src="https://img.icons8.com/flat-round/64/000000/bee--v1.png" alt="Bumble Bee" width="60"
+                  height="60">
               </a>
             </div>
             {{#unless loggedIn}}
@@ -29,13 +29,13 @@
             {{#if loggedIn}}
             <a href="/dashboard">Dashboard</a>
             <a href="/profile">Profile</a>
-            <button id="logout" class="btn-no-style">Logout</button>
+            <button id="logout">Logout</button>
             {{/if}}
           </nav>
         </header>
       </div>
 
-      <div class="col-8">
+      <div class="col-8 mx-auto mt-12">
         <main>
           {{{ body }}}
         </main>
