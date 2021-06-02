@@ -17,15 +17,35 @@ a {
     font-weight: bold;
     transition: color 0.1s;
     margin-top: 25px;
+
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #333533;
+    font-weight: bold;
+    transition: color 0.1s;
+    margin-top: 25px;
+    display: inline-block;
+}
+
+.sidebar {
+    background-color: #333533;
+    background-image: 
+        linear-gradient(
+            to right,
+            grey, 1%, #cfd8d5
+        );
+    margin-top: 2rem;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+    border-radius: .5rem;
 }
 
 a:hover {
     background-color: #e8eddf;
     border-radius: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-right: 24px;
-    transition: background-color 0.30s;
+    transition: background-color 1s;
 }
 
 button {
@@ -106,6 +126,7 @@ textarea {
     padding-bottom: 30px;
     background-color: #e8eddf;
     border-radius: .5rem;
+    
     
     
 }
