@@ -142,6 +142,7 @@ router.put("/edit-profile/:id", withAuth, (req, res) => {
     {
       bio: req.body.bio,
       location: req.body.location,
+      profile_picture: req.files.profile_pic,
     },
     {
       where: {
