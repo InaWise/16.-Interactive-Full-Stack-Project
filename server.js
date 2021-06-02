@@ -1,6 +1,7 @@
 const exphbs = require("express-handlebars");
 const express =  require('express');
 const session = require("express-session");
+const multer = require('multer');
 const path = require("path");
 const sequelize = require('./config/connection');
 const routes = require('./controllers');
