@@ -137,32 +137,6 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// edit profile route
-router.post("/edit-profile/:id", withAuth, (req, res) => {
-  User.create(
-    {
-      bio: req.body.bio,
-      location: req.body.location,
-    },
-    {
-      where: {
-        id: req.params.id,
-      },
-    }
-  )
-    .then((dbPostData) => {
-      if (!dbPostData) {
-        res.status(404).json({ message: "No post found with this id" });
-        return;
-      }
-      res.json(dbPostData);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
 router.delete('/:id', withAuth, (req, res) => {
   User.destroy({
     where: {

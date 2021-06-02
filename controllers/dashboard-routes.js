@@ -28,7 +28,34 @@ router.get("/", withAuth, (req, res) => {
   })
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
+      console.log(posts);
       res.render("dashboard", { posts, loggedIn: true });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// edit profile route
+router.post("/edit-profile/:id", withAuth, (req, res) => {
+  User.create(
+    {
+      bio: req.body.bio,
+      location: req.body.location,
+    },
+    {
+      where: {
+        id: req.params.id,
+      },
+    }
+  )
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "Cant edit this profile" });
+        return;
+      }
+      res.json(dbUserData);
     })
     .catch((err) => {
       console.log(err);
