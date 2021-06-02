@@ -55,6 +55,8 @@ router.post("/signup", (req, res) => {
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
+    bio: req.body.bio,
+    location: req.body.location,
   }).then((dbUserData) => {
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
@@ -138,11 +140,12 @@ router.put('/:id', (req, res) => {
 });
 
 router.put("/edit-profile/:id", withAuth, (req, res) => {
+  console.log(req.files.file.data);
   User.update(
     {
       bio: req.body.bio,
       location: req.body.location,
-      profile_picture: req.files.profile_pic,
+      profile_picture: req.files.file.data,
     },
     {
       where: {
