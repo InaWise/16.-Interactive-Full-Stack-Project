@@ -23,7 +23,10 @@ User.init(
     },
     username: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        len: [4]
+      }
     },
     email: {
       type: DataTypes.STRING,
@@ -39,6 +42,14 @@ User.init(
       validate: {
         len: [4]
       }
+    },
+    bio: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: true
     }
   },
   {
