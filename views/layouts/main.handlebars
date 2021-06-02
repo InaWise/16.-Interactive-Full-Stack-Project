@@ -7,56 +7,53 @@
   <title>StayBuzzin</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 
-<body>
-  <div class="container align-items-center">
-    <div class="row">
-      <div class="col-4">
-        <header class="">
-          <nav class="nav flex-column">
-            <div class="container">
-              <a class="navbar-brand" href="/">
-                <!--<img src="staybuzzin.png" alt="StayBuzzin" width="100" height="20">-->
+<div id="wrappper">
+  <!--SIDEBAR-->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav ">
+          <li class="sidebar-brand">
+              <a href="/">
                 <img src="https://img.icons8.com/flat-round/64/000000/bee--v1.png" alt="Bumble Bee" width="60"
-                  height="60">
-                
+                    height="60">
+                    Stay Buzzin
               </a>
-
-            </div>
-              <div class="sidebar mx-auto col-12">
-                {{#unless loggedIn}}
-                <a class="px-lg-5" href="/login">Login</a>
-                {{/unless}}
-                {{#if loggedIn}}
-                <a class="px-lg-5" href="/dashboard">Dashboard</a>
-                <a class="px-lg-5" href="/profile">Profile</a>
-                <button class="px-lg-5" id="logout">Logout</button>
-                {{/if}}
-                </div>
-          </nav>
-        </header>
-        
-    
-      </div>
-
-      <div class="col-8 mx-auto mt-12">
-        <main class="">
-          {{{ body }}}
-        </main>
-      </div>
-
-      <footer class="footer mt-auto py-3 bg-light">
-        <div class="container-footer">
-          <small>&copy; Copyright 2021, StayBuzzin</small>
-          <a href="https://icons8.com/icon/80986/bee">Icons by Icons8</a>
-        </div>
-      </footer>
-    </div>
-
+          </li>
+          {{unless loggedIn}}
+          <li>
+              <a href="/login">Login</a>
+          </li>
+          {{/unless}}
+          {{#if loggedIn}}
+          <li>
+              <a href="/dashboard">Profile</a>
+          </li>
+          <li>
+              <button  id="/logout">Logout</button>
+          </li>
+      </ul>
+      <!--NOT SURE WHERE THIS LAST IF GOES-->
+      {{/if}}
   </div>
-  
+
+
+  <!-- main -->
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row"
+          <div class="col-3">
+          </div>
+            <div class="col-4 mx-auto">
+                {{{ body }}}
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
   {{#if loggedIn}}
   <script src="/javascript/logout.js"></script>
   {{/if}}
