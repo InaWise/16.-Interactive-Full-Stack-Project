@@ -38,29 +38,28 @@ router.get("/", withAuth, (req, res) => {
 });
 
 // edit profile route
-router.post("/edit-profile/:id", withAuth, (req, res) => {
-  User.create(
-    {
-      bio: req.body.bio,
-      location: req.body.location,
+router.get("/edit-profile/:id", withAuth, (req, res) => {
+  User.findOne({
+    where: {
+      id: req.session.user_id
     },
-    {
-      where: {
-        id: req.params.id,
-      },
+    attributes: { exclude: ['password'] },
+  })
+  .then((dbUserData) => {
+    if (dbUserData) {
+      const user = dbUserData.get({ plain: true });
+
+      res.render("edit-post", {
+        user,
+        loggedIn: true,
+      });
+    } else {
+      res.status(404).end();
     }
-  )
-    .then((dbUserData) => {
-      if (!dbUserData) {
-        res.status(404).json({ message: "Cant edit this profile" });
-        return;
-      }
-      res.json(dbUserData);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+  })
+  .catch((err) => {
+    res.status(500).json(err);
+  });
 });
 
 router.get("/edit/:id", withAuth, (req, res) => {

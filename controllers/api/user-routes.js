@@ -64,10 +64,10 @@ router.post("/signup", (req, res) => {
       res.json(dbUserData);
     });
   })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // login route
@@ -99,10 +99,10 @@ router.post('/login', (req, res) => {
       return res.status(200).json({ user: dbUserData, message: "You are now logged in!" });
     });
   })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });;
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });;
 });
 
 // logout route
@@ -132,6 +132,30 @@ router.put('/:id', (req, res) => {
       res.json(dbUserData);
     })
     .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.put("/edit-profile/:id", withAuth, (req, res) => {
+  User.update(
+    {
+      bio: req.body.bio,
+      location: req.body.location,
+    },
+    {
+      where: {
+        id: req.params.id
+      },
+    })
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "Cant edit this profile" });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
