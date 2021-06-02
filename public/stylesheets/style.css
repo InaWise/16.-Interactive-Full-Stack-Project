@@ -8,6 +8,7 @@ body, html {
     padding: 0;
     margin: 0;
     color: #cfd8d5;
+    background-color: #cfd8d5;
 }
 
 a {
@@ -19,7 +20,12 @@ a {
 }
 
 a:hover {
-    color: #f5cb5c;
+    background-color: #e8eddf;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-right: 24px;
+    transition: background-color 0.30s;
 }
 
 button {
@@ -33,6 +39,7 @@ button {
     border-radius: 5px;
     position: relative;
     margin-top: 25px;
+    margin-right: 24px;
 }
 
 button:hover {
@@ -58,6 +65,7 @@ textarea:focus, input:focus {
     outline: none;
     border: 1px solid #3486eb;
 }
+
 
 textarea {
     min-width: 40%;
@@ -91,6 +99,17 @@ textarea {
     border-top-right-radius: 0;
 }
 
+.navbar-brand {
+    padding-left: 130px;
+    padding-right: 10px;
+    padding-top:  15px;
+    padding-bottom: 30px;
+    background-color: #e8eddf;
+    border-radius: .5rem;
+    
+    
+}
+
 header {
     border-bottom: 1px solid #ccc;
     display: flex;
@@ -106,7 +125,12 @@ header h1 {
 main {
     flex: 1;
     padding: 2% 4%;
-    border: 1px solid gray;
+    border: 1px solid #E8eddf;
+    background-color: #e8eddf;
+    border-radius: .5rem;
+    margin-top: 15%;
+    color: #333533;
+
 }
 
 .btn-no-style {
@@ -152,7 +176,7 @@ main {
 }
 
 .upvote-btn {
-    background-color: #197d0f;
+    background-color: #465545;
     transition: background-color 0.1s;
 }
 
@@ -171,7 +195,6 @@ main {
 
 .comment:nth-child(odd) {
     background-color: #E8eddf;
-;
 }
 
 .comment .meta {
@@ -192,6 +215,7 @@ main {
     position: fixed;
     left: 0;
     bottom: 0;
+    
     width: 100%;
     color: black;
     text-align: center;
