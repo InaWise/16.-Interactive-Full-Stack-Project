@@ -7,37 +7,45 @@
   <title>StayBuzzin</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="container">
-
+  <div class="container align-items-center">
     <div class="row">
       <div class="col-4">
         <header class="">
           <nav class="nav flex-column">
             <div class="container">
               <a class="navbar-brand" href="/">
+                <!--<img src="staybuzzin.png" alt="StayBuzzin" width="100" height="20">-->
                 <img src="https://img.icons8.com/flat-round/64/000000/bee--v1.png" alt="Bumble Bee" width="60"
                   height="60">
+                
               </a>
+
             </div>
-            {{#unless loggedIn}}
-            <a href="/login">Login</a>
-            {{/unless}}
-            {{#if loggedIn}}
-            <a href="/dashboard">Dashboard</a>
-            <a href="/profile">Profile</a>
-            <button id="logout">Logout</button>
-            {{/if}}
+              <div class="sidebar mx-auto col-12"
+                {{#unless loggedIn}}
+                <a class="px-lg-5" href="/login">Login</a>
+                {{/unless}}
+                {{#if loggedIn}}
+                <a class="px-lg-5" href="/dashboard">Dashboard</a>
+                <a class="px-lg-5" href="/profile">Profile</a>
+                <button class="px-lg-5" id="logout">Logout</button>
+                {{/if}}
+                </div>
           </nav>
         </header>
+        
+    
       </div>
 
       <div class="col-8 mx-auto mt-12">
-        <main>
+        <main class="">
           {{{ body }}}
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, soluta tenetur numquam consequuntur facilis qui obcaecati! Fuga culpa eligendi quod laudantium consectetur explicabo asperiores non beatae. Perferendis, est inventore. Qui, est? Laudantium reiciendis at assumenda voluptatem sequi necessitatibus? Fugiat quo perspiciatis, quaerat modi dolor sed nobis natus, dicta ducimus omnis unde praesentium libero, error itaque dignissimos assumenda excepturi reprehenderit nam porro. Non temporibus ducimus eos doloribus fuga voluptas voluptates nihil consequatur quaerat, at eius distinctio in repellendus cupiditate culpa modi labore quas dolor, soluta dolores odio. Maxime minima unde earum at ab aperiam, quisquam officia, ullam voluptatem dolores perferendis inventore?
+
         </main>
       </div>
 
@@ -50,9 +58,10 @@
     </div>
 
   </div>
-  {{#if loggedIn}}
+  <!--
+  {{#if loggedIn}-->
   <script src="/javascript/logout.js"></script>
-  {{/if}}
+  <!--{{/if}}-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
     crossorigin="anonymous"></script>
@@ -63,5 +72,4 @@
     integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
     crossorigin="anonymous"></script>
 </body>
-
 </html>
