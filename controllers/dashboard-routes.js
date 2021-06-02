@@ -27,8 +27,9 @@ router.get("/", withAuth, (req, res) => {
     ],
   })
     .then((dbPostData) => {
+      console.log("dbpoast",dbPostData);
       const posts = dbPostData.map((post) => post.get({ plain: true }));
-      res.render("dashboard", { posts, loggedIn: true });
+      res.render("dashboard", { posts, loggedIn: true, location: "Chicago", Bio: "This is the bio example.", Username:"User1" });
     })
     .catch((err) => {
       console.log(err);
