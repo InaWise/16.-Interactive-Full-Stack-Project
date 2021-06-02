@@ -37,6 +37,32 @@ router.get("/", withAuth, (req, res) => {
     });
 });
 
+// edit profile route
+router.post("/edit-profile/:id", withAuth, (req, res) => {
+  User.create(
+    {
+      bio: req.body.bio,
+      location: req.body.location,
+    },
+    {
+      where: {
+        id: req.params.id,
+      },
+    }
+  )
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "Cant edit this profile" });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 router.get("/edit/:id", withAuth, (req, res) => {
   Post.findByPk(req.params.id, {
     attributes: ["id", "title", "content", "created_at"],
