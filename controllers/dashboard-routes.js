@@ -68,7 +68,6 @@ router.get("/edit-profile/", withAuth, (req, res) => {
     .then((dbUserData) => {
       if (dbUserData) {
         const user = dbUserData.get({ plain: true });
-        console.log(user, "Over here YO");
 
         res.render("edit-profile", {
           user,

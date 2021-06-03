@@ -139,17 +139,19 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.put("/edit-profile/:id", withAuth, (req, res) => {
+router.put("/profile", withAuth, (req, res) => {
   console.log(req.files.file.data);
+  console.log(req.body);
+  console.log(req.session.user_id);
   User.update(
     {
       bio: req.body.bio,
       location: req.body.location,
-      profile_picture: req.files.file.data,
+      // profile_picture: req.files.file.data,
     },
     {
       where: {
-        id: req.params.id
+        id: req.session.user_id
       },
     })
     .then((dbUserData) => {

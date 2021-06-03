@@ -1,0 +1,42 @@
+<section>
+    <a href="/dashboard">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+            class="bi bi-arrow-left-square" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+        </svg>
+    </a>
+    <div>
+    <img src="/images/blank-profile-picture.png" class="rounded-circle img-thumbnail" width="200" height="200"
+        id="imagePreview">
+    <h2>{{user.username}}</h2>
+    </div>
+
+    <form class="new-post-form">
+        <div class="mb-3">
+            <input id="user-bio" name="user-bio" type="text" class="form-control form-control-lg">
+            <label for="floatingInput"> Bio </label>
+        </div>
+        <div class="mb-3">
+            <input id="user-location" name="user-location" type="text" class="form-control form-control-sm">
+            <label for="floatingLocation">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+                </svg> Location
+            </label>
+        </div>
+        <div class="mb-3">
+            <input id="user-birthday" name="user-birthday" type="text" class="form-control form-control-sm">
+            <label for="floatingBirthday">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+                </svg> Birthday
+            </label>
+        </div>
+        <button type="submit" class="btn btn-warning" id="save-profile">Save Profile</button>
+    </form>
+</section>
+
+<script src="/javascript/edit-profile.js"></script>
