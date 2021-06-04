@@ -1,12 +1,10 @@
 async function editProfileHandler(event) {
-    console.log("HERRERERERER");
     event.preventDefault();
 
     const bio = document.querySelector('input[name="user-bio"]').value.trim();
     const location = document.querySelector('input[name="user-location"]').value.trim();
     // const birthday = document.getElementById("user-birthday").value.trim();
-    console.log(req.session.user_id);
-    const response = await fetch('/api/users/profile/', {
+    const response = await fetch('/api/users/profile/:id', {
         method: "PUT",
         body: JSON.stringify({
             bio,
@@ -16,7 +14,7 @@ async function editProfileHandler(event) {
             "Content-Type": "application/json",
         },
     });
-
+    console.log(response, "RESPONSE");
     if (response.ok) {
         document.location.replace("/dashboard/");
     } else {
@@ -25,8 +23,8 @@ async function editProfileHandler(event) {
 }
 
 document
-    .querySelector('button[id="save-profile"]')
-    .addEventListener("submit", editProfileHandler);
+    .getElementById("save-profile")
+    .addEventListener("click", editProfileHandler);
 
 // Profile Picture Script
 

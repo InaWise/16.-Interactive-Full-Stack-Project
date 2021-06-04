@@ -139,10 +139,10 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.put("/profile", withAuth, (req, res) => {
-  console.log(req.files.file.data);
-  console.log(req.body);
-  console.log(req.session.user_id);
+router.put("/profile/:id", withAuth, (req, res) => {
+  // console.log(req.files.file.data);
+  console.log(req.session.user_id, "SESSION ID");
+  console.log(req.body, "HERERERER");
   User.update(
     {
       bio: req.body.bio,
