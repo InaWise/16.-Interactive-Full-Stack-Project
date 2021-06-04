@@ -147,7 +147,7 @@ router.put("/profile/:id", withAuth, (req, res) => {
     {
       bio: req.body.bio,
       location: req.body.location,
-      // profile_picture: req.files.file.data,
+      profile_picture: req.files.file.data,
     },
     {
       where: {
