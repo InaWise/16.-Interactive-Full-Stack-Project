@@ -3,7 +3,8 @@ const sequelize = require("../config/connection");
 const { User, Post, Comment } = require("../models");
 
 router.get("/", (req, res) => {
-  
+  console.log("HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!");
+  console.log(req.session, "homepage render");
   Post.findAll({
     attributes: [
       "id",
@@ -29,6 +30,7 @@ router.get("/", (req, res) => {
     .then((dbPostData) => {
       // pass a single post object into the homepage template
       const posts = dbPostData.map((post) => post.get({ plain: true }));
+      // console.log(req.session, "homepage render");
       res.render("homepage", {
         posts,
         loggedIn: req.session.loggedIn,
@@ -58,6 +60,7 @@ router.get("/signup", (req, res) => {
 });
 
 router.get("/post/:id", (req, res) => {
+  console.log(req.session, "post testing");
   Post.findOne({
     where: {
       id: req.params.id,

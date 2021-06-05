@@ -16,5 +16,5 @@ async function deleteFormHandler(event) {
 }
 
 document
-  .querySelector(".delete-post-btn")
+  .getElementById("delete-post-btn")
   .addEventListener("click", deleteFormHandler);

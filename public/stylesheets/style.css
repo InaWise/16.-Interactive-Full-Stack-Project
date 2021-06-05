@@ -1,28 +1,164 @@
 * {
     box-sizing: border-box;
     margin: 0;
+    font-family: Verdana;
 }
 
 body, html {
     height: 100%;
     padding: 0;
     margin: 0;
-    color: gray;
+    color: #333533;
+    background-color: #cfd8d5;
 }
 
-a {
+.logo {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+p {
+    font-size: large, bold;
+}
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #333533;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    z-index: 1;
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* SIDEBAR */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 40px;
+    line-height: 40px;
+    margin-top: 20px;
+}
+
+.sidebar-nav li a {
+    display: block;
     text-decoration: none;
-    color: #225ca3;
-    font-weight: bold;
-    transition: color 0.1s;
+    color: #999999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+main {
+    flex: 1;
+    padding: 2% 4%;
+    border: 1px solid #E8eddf;
+    background-color: #e8eddf;
+    border-radius: .5rem;
+    margin-top: 15%;
+    color: #333533;
+
+}
+
+
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
 }
 
 a:hover {
-    color: #3486eb;
+    color: #f5cb5c;
 }
 
 button {
-    background-color: #225ca3;
+    background-color: #333533;
     border: 0;
     padding: 1%;
     color: white;
@@ -30,10 +166,16 @@ button {
     transition: background-color 0.1s;
     cursor: pointer;
     border-radius: 5px;
+    position: relative;
+    margin-top: 25px;
 }
 
 button:hover {
-    background-color: #3486eb;
+    color: #f5cb5c;
+}
+
+a img {
+    margin-top: 12px;
 }
 
 .post-list {
@@ -57,12 +199,31 @@ textarea {
     min-height: 100px;
 }
 
-form>div {
-    margin-bottom: 2%;
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
 }
 
-form label {
-    display: block;
+.form-signin .checkbox {
+    font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 header {
@@ -80,6 +241,7 @@ header h1 {
 main {
     flex: 1;
     padding: 2% 4%;
+    border: 1px solid gray;
 }
 
 .btn-no-style {
@@ -143,7 +305,8 @@ main {
 }
 
 .comment:nth-child(odd) {
-    background-color: #fff5eb;
+    background-color: #fdfdfd;
+;
 }
 
 .comment .meta {
@@ -160,10 +323,11 @@ main {
     margin-bottom: 5%;
 }
 
-footer {
-    border-top: 1px solid #ccc;
-    display: flex;
-    justify-content: space-between;
-    padding: 1%;
-    font-size: 110%;
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: black;
+    text-align: center;
 }

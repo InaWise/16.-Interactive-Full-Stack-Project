@@ -19,7 +19,7 @@ router.get('/:id', (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
     where: {
-      id: req.params.id
+      id: req.session.user_id
     },
     include: [
       {
@@ -50,11 +50,13 @@ router.get('/:id', (req, res) => {
 });
 
 // signup route
-router.post("/", (req, res) => {
+router.post("/signup", (req, res) => {
   User.create({
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
+    bio: req.body.bio,
+    location: req.body.location,
   }).then((dbUserData) => {
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
@@ -64,10 +66,10 @@ router.post("/", (req, res) => {
       res.json(dbUserData);
     });
   })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // login route
@@ -78,7 +80,7 @@ router.post('/login', (req, res) => {
     }
   }).then(dbUserData => {
     if (!dbUserData) {
-      res.status(400).json({ message: 'No user with that email address!' });
+      res.status(400).json({ message: 'No user found!' });
       return;
     }
 
@@ -95,13 +97,14 @@ router.post('/login', (req, res) => {
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
 
-      res.status(200).json({ user: dbUserData, message: "You are now logged in!" });
+      console.log(req.session, 'api login');
+      return res.status(200).json({ user: dbUserData, message: "You are now logged in!" });
     });
   })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });;
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });;
 });
 
 // logout route
@@ -130,6 +133,53 @@ router.put('/:id', (req, res) => {
       res.json(dbUserData);
     })
     .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.put("/profile/:id", withAuth, (req, res) => {
+  User.update(
+    {
+      bio: req.body.bio,
+      location: req.body.location
+    },
+    {
+      where: {
+        id: req.session.user_id
+      },
+    })
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "Cant edit this profile" });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.put("/profile-picture/:id", withAuth, (req, res) => {
+  User.update(
+    {
+      profile_picture: req.files.file.data,
+    },
+    {
+      where: {
+        id: req.session.user_id
+      },
+    })
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "Cant edit this profile" });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });

@@ -27,10 +27,56 @@ router.get("/", withAuth, (req, res) => {
   })
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
-      res.render("dashboard", { posts, loggedIn: true });
+      return posts;
+    })
+    .then((posts) => {
+
+      return User.findOne({
+        where: {
+          id: req.session.user_id
+        },
+        attributes: { exclude: ['password'] },
+      })
+        .then((dbUserData) => {
+          if (dbUserData) {
+            const user = dbUserData.get({ plain: true });
+            res.render("dashboard", { posts, loggedIn: true, location: user.location ? user.location : "Unknown", Bio: user.bio ? user.bio : "", Username: user.username, Id: user.id, Picture: user.profile_picture });
+
+          } else {
+            res.status(404).end();
+          }
+        })
+        .catch((err) => {
+          res.status(500).json(err);
+        });
     })
     .catch((err) => {
       console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// edit profile route
+router.get("/edit-profile/", withAuth, (req, res) => {
+  User.findOne({
+    where: {
+      id: req.session.user_id
+    },
+    attributes: { exclude: ['password'] },
+  })
+    .then((dbUserData) => {
+      if (dbUserData) {
+        const user = dbUserData.get({ plain: true });
+
+        res.render("edit-profile", {
+          user,
+          loggedIn: true,
+        });
+      } else {
+        res.status(404).end();
+      }
+    })
+    .catch((err) => {
       res.status(500).json(err);
     });
 });
