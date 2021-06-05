@@ -70,6 +70,7 @@
     }).then(res => {
       return res.json();
     }).then(newData => {
+      console.log(newData);
       /*Grab the array buffer from response*/
       const imgData = newData.profile_picture.data;
       /*Convert buffer to typed array */
