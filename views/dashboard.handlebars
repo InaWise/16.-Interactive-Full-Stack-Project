@@ -1,6 +1,6 @@
 <section>
   <img src="/images/blank-profile-picture.png" class="rounded-circle img-thumbnail" width="200" height="200"
-    id="profilePicture" onload="picture()">
+    id="profile-picture">
 
   <h3>{{Username}}</h3>
   <div> Bio {{Bio}} </div>
@@ -62,28 +62,5 @@
   </ol>
 </section>
 {{/if}}
-<script>
-  function picture() {
-    const response = fetch('/api/users/:id', {
-      method: 'get',
-      headers: { 'Content-Type': 'application/json' }
-    }).then(res => {
-      return res.json();
-    }).then(newData => {
-      console.log(newData);
-      /*Grab the array buffer from response*/
-      const imgData = newData.profile_picture.data;
-      /*Convert buffer to typed array */
-      let typedArray = new Uint8Array(imgData);
-      /*Convert array to Blob*/
-      let blob = new Blob([typedArray], { type: 'image/jpeg' });
-      /*create html img element*/
-      const nImage = document.getElementById('profilePicture');
-      /*set the img src to an object url*/
-      return nImage.src = URL.createObjectURL(blob);
-    }).catch(e => {
-      console.log(e)
-    });
-  };
-</script>
 <script src="/javascript/add-post.js"></script>
+<script src="/javascript/edit-profile.js"></script>

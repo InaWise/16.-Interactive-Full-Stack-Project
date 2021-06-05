@@ -1,3 +1,36 @@
+
+// Fetch all existing use data
+
+async function getAndSetUserProfilePicture() {
+    const profilePicture = document.getElementById('profile-picture');
+    const response = await fetch('/api/users/:id', {
+        method: 'get',
+        headers: { 'Content-Type': 'application/json' }
+    }).then(res => {
+        return res.json();
+    }).catch(e => {
+        console.log(e)
+    });
+
+    if (!response.profile_picture) {
+       profilePicture.src("/images/blank-profile-picture.png");
+
+       return;
+    }
+    /*Grab the array buffer from response*/
+    const imgData = response.profile_picture.data;
+    /*Convert buffer to typed array */
+    let typedArray = new Uint8Array(imgData);
+    /*Convert array to Blob*/
+    let blob = new Blob([typedArray], { type: 'image/jpeg' });
+    /*create html img element*/
+    const nImage = document.getElementById('profile-picture');
+    /*set the img src to an object url*/
+    nImage.src = URL.createObjectURL(blob);
+}
+
+getAndSetUserProfilePicture();
+
 async function editProfileHandler(event) {
     event.preventDefault();
 
@@ -28,7 +61,7 @@ document
 
 // Profile Picture Script
 const upload_picture = document.getElementById('upload');
-const imgContainerEl = document.getElementById('profilePicture');
+const profilePicture = document.getElementById('profile-picture');
 
 async function imageUploadHandler(event) {
     event.preventDefault();
@@ -70,20 +103,17 @@ async function imageUploadHandler(event) {
                         console.log(e)
                     });
                     /*Grab the array buffer from response*/
-                    console.log(response, "HERERERERERE");
+                    console.log(response.profile_picture.data, "HERERERERERE");
                     const imgData = response.profile_picture.data;
                     /*Convert buffer to typed array */
                     let typedArray = new Uint8Array(imgData);
                     /*Convert array to Blob*/
                     let blob = new Blob([typedArray], { type: 'image/jpeg' });
                     /*create html img element*/
-                    const nImage = document.getElementById('profilePicture');
+                    const nImage = document.getElementById('profile-picture');
                     /*set the img src to an object url*/
                     nImage.src = URL.createObjectURL(blob);
                     console.log(nImage);
-                    /*Append Image to page*/
-                    imgContainerEl.src = nImage.src;
-
                 } else {
                     alert(imageUpload.statusText);
                 }
