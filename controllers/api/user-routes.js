@@ -19,7 +19,7 @@ router.get('/:id', (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
     where: {
-      id: req.params.id
+      id: req.session.user_id
     },
     include: [
       {
@@ -55,6 +55,8 @@ router.post("/signup", (req, res) => {
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
+    bio: req.body.bio,
+    location: req.body.location,
   }).then((dbUserData) => {
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
@@ -107,7 +109,6 @@ router.post('/login', (req, res) => {
 
 // logout route
 router.post("/logout", (req, res) => {
-  console.log(req, "logout request");
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -137,15 +138,38 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.put("/edit-profile/:id", withAuth, (req, res) => {
+router.put("/profile/:id", withAuth, (req, res) => {
   User.update(
     {
       bio: req.body.bio,
-      location: req.body.location,
+      location: req.body.location
     },
     {
       where: {
-        id: req.params.id
+        id: req.session.user_id
+      },
+    })
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "Cant edit this profile" });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.put("/profile-picture/:id", withAuth, (req, res) => {
+  User.update(
+    {
+      profile_picture: req.files.file.data,
+    },
+    {
+      where: {
+        id: req.session.user_id
       },
     })
     .then((dbUserData) => {

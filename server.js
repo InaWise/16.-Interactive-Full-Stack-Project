@@ -1,7 +1,7 @@
 const exphbs = require("express-handlebars");
 const express =  require('express');
 const session = require("express-session");
-const multer = require('multer');
+const fileUpload = require('express-fileupload');
 const path = require("path");
 const sequelize = require('./config/connection');
 const routes = require('./controllers');
@@ -26,6 +26,7 @@ app.use(session(sess));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(fileUpload());
 
 // Turn on the routes
 app.use(routes);
