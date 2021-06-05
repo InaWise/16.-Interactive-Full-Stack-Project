@@ -19,7 +19,7 @@ router.get('/:id', (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
     where: {
-      id: req.params.id
+      id: req.session.user_id
     },
     include: [
       {
@@ -140,13 +140,32 @@ router.put('/:id', (req, res) => {
 });
 
 router.put("/profile/:id", withAuth, (req, res) => {
-  // console.log(req.files.file.data);
-  console.log(req.session.user_id, "SESSION ID");
-  console.log(req.body, "HERERERER");
   User.update(
     {
       bio: req.body.bio,
-      location: req.body.location,
+      location: req.body.location
+    },
+    {
+      where: {
+        id: req.session.user_id
+      },
+    })
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "Cant edit this profile" });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.put("/profile-picture/:id", withAuth, (req, res) => {
+  User.update(
+    {
       profile_picture: req.files.file.data,
     },
     {
