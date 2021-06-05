@@ -5,7 +5,6 @@ const { User, Post, Comment } = require("../models");
 
 // Get all posts for the Dashboard
 router.get("/", withAuth, (req, res) => {
-  console.log(req.session, "dashboard");
   Post.findAll({
     where: {
       user_id: req.session.user_id,
@@ -27,36 +26,29 @@ router.get("/", withAuth, (req, res) => {
     ],
   })
     .then((dbPostData) => {
-      console.log("dbpoast",dbPostData);
       const posts = dbPostData.map((post) => post.get({ plain: true }));
       return posts;
     })
-    .then((posts)=> {
-
-
+    .then((posts) => {
 
       return User.findOne({
-        where: { 
+        where: {
           id: req.session.user_id
         },
         attributes: { exclude: ['password'] },
       })
-      .then((dbUserData) => {
-        if (dbUserData) {
-          const user = dbUserData.get({ plain: true });
-          console.log("user", user)
-          res.render("dashboard", { posts, loggedIn: true, location: user.location ? user.location : "Unknown", Bio: user.bio ? user.bio :"", Username: user.username });
+        .then((dbUserData) => {
+          if (dbUserData) {
+            const user = dbUserData.get({ plain: true });
+            res.render("dashboard", { posts, loggedIn: true, location: user.location ? user.location : "Unknown", Bio: user.bio ? user.bio : "", Username: user.username, Id: user.id, Picture: user.profile_picture });
 
-        } else {
-          res.status(404).end();
-        }
-      })
-      .catch((err) => {
-        res.status(500).json(err);
-      });
-
-
-      
+          } else {
+            res.status(404).end();
+          }
+        })
+        .catch((err) => {
+          res.status(500).json(err);
+        });
     })
     .catch((err) => {
       console.log(err);
@@ -65,28 +57,28 @@ router.get("/", withAuth, (req, res) => {
 });
 
 // edit profile route
-router.get("/edit-profile/:id", withAuth, (req, res) => {
+router.get("/edit-profile/", withAuth, (req, res) => {
   User.findOne({
-    where: { 
+    where: {
       id: req.session.user_id
     },
     attributes: { exclude: ['password'] },
   })
-  .then((dbUserData) => {
-    if (dbUserData) {
-      const user = dbUserData.get({ plain: true });
+    .then((dbUserData) => {
+      if (dbUserData) {
+        const user = dbUserData.get({ plain: true });
 
-      res.render("edit-post", {
-        user,
-        loggedIn: true,
-      });
-    } else {
-      res.status(404).end();
-    }
-  })
-  .catch((err) => {
-    res.status(500).json(err);
-  });
+        res.render("edit-profile", {
+          user,
+          loggedIn: true,
+        });
+      } else {
+        res.status(404).end();
+      }
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
 });
 
 router.get("/edit/:id", withAuth, (req, res) => {

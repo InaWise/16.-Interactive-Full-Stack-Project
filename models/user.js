@@ -45,12 +45,19 @@ User.init(
     },
     bio: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true,
+      defaultValue: null,
     },
     location: {
       type: DataTypes.STRING,
-      allowNull: true
-    }
+      allowNull: true,
+      defaultValue: null,
+    },
+    profile_picture: {
+      type: DataTypes.BLOB('long'),
+      allowNull: true,
+      defaultValue: null,
+    },
   },
   {
     hooks: {
