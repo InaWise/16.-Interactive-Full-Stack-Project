@@ -27,25 +27,16 @@ document
     .addEventListener("click", editProfileHandler);
 
 // Profile Picture Script
-const btn2 = document.getElementById('upload');
-const imgContainer = document.getElementById('profilePicture');
+const upload_picture = document.getElementById('upload');
+const imgContainerEl = document.getElementById('profilePicture');
 
 async function imageUploadHandler(event) {
     event.preventDefault();
     const form = document.getElementById('test');
-    /* Need the Response body in JSON to read objects*/
-    // let idData = '';
-    // const resData = await response.json();
-    // console.log(resData, "HERE");
-    /* Grab the user id */
-    // const id = resData.id
-    /*store in global to use to retrieve last image uploaded*/
-    // idData = id;
     const file = document.getElementById('input-files');
     const length = file.files.length;
     const fileData = file.files[0];
     /*check the file contents, dont send if field is empty*/
-    console.log(fileData)
     if (length === 0) {
         alert('You must select a file!');
     } else {
@@ -67,7 +58,7 @@ async function imageUploadHandler(event) {
                 });
                 if (imageUpload.ok) {
                     alert('Image successfully uploaded!');
-                    document.getElementById('profilePicture').setAttribute('src', '');
+                    // document.getElementById('profilePicture').setAttribute('src', '');
                     form.setAttribute('style', 'visibility: hidden;')
 
                     const response = await fetch('/api/users/:id', {
@@ -89,8 +80,9 @@ async function imageUploadHandler(event) {
                     const nImage = document.getElementById('profilePicture');
                     /*set the img src to an object url*/
                     nImage.src = URL.createObjectURL(blob);
+                    console.log(nImage);
                     /*Append Image to page*/
-                    // imgContainerEl.appendChild(nImage);
+                    imgContainerEl.src = nImage.src;
 
                 } else {
                     alert(imageUpload.statusText);
@@ -102,4 +94,4 @@ async function imageUploadHandler(event) {
     }
 }
 
-btn2.addEventListener('click', imageUploadHandler);
+upload_picture.addEventListener('click', imageUploadHandler);
