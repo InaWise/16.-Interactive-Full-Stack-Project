@@ -21,7 +21,7 @@ A simple social media application where users can signup, edit their profiles by
 
 [Contributors](#contributors)
 
-## Installation
+:package: ## Installation
 
 To install all necessary dependencies, run the following command:
 
