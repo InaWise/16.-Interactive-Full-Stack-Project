@@ -9,17 +9,17 @@ A simple social media application where users can signup, edit their profiles by
 
 ## Table of Contents
 
-[Installation](#installation)
+[Installation](#package-installation)
 
-[Tech/Frameworks Used](#tech/frameworks)
+[Tech/Frameworks Used](#computer-tech/frameworks)
 
-[Usage](#usage)
+[Usage](#thought_balloon-usage)
 
-[License](#license)
+[License](#copyright-license)
 
-[Questions](#questions)
+[Questions](#question-questions)
 
-[Contributors](#contributors)
+[Contributors](#pencil2-contributors)
 
 ## :package: Installation
 
@@ -27,7 +27,7 @@ To install all necessary dependencies, run the following command:
 
     npm i
 
-## Tech/Frameworks
+## :computer: Tech/Frameworks
     * JavaScript
     * CSS
     * Node.js
@@ -40,19 +40,19 @@ To install all necessary dependencies, run the following command:
     * sequelize
     * express-session
 
-## Usage
+## :thought_balloon: Usage
 
 How to navigate through mySQL, and how to use Node.js
 
-## License
+## :copyright: License
 
 This project is currently not licensed, YET :)
 
-## Questions 
+## :question: Questions
 
 If you have any questions about the repo, open an issue or contact one of the main contributers directly!
 
-## Contributors
+## :pencil2: Contributors
 
 - Landon Wilson - Email: / GitHub: [Landonwilson1](https://github.com/Landonwilson1)
 - Ina Wise - Email: / GitHub: [InaWise](https://github.com/InaWise)
