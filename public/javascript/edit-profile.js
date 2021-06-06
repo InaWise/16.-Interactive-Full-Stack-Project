@@ -36,12 +36,13 @@ async function editProfileHandler(event) {
 
     const bio = document.querySelector('input[name="user-bio"]').value.trim();
     const location = document.querySelector('input[name="user-location"]').value.trim();
-    // const birthday = document.getElementById("user-birthday").value.trim();
+    const birthday = document.querySelector('input[name="user-birthday"]').value.trim();
     const response = await fetch('/api/users/profile/:id', {
         method: "PUT",
         body: JSON.stringify({
             bio,
             location,
+            birthday,
         }),
         headers: {
             "Content-Type": "application/json",

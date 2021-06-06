@@ -53,6 +53,11 @@ User.init(
       allowNull: true,
       defaultValue: null,
     },
+    birthday: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: null,
+    },
     profile_picture: {
       type: DataTypes.BLOB('long'),
       allowNull: true,
