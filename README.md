@@ -56,6 +56,6 @@ If you have any questions about the repo, open an issue or contact one of the ma
 
 ## :pencil2: Contributors
 
-- Landon Wilson - Email: / GitHub: [Landonwilson1](https://github.com/Landonwilson1)
+- Landon Wilson - Email: Landonjwilson1@gmail.com / GitHub: [Landonwilson1](https://github.com/Landonwilson1)
 - Ina Wise - Email: / GitHub: [InaWise](https://github.com/InaWise)
 - Semion Evdokimov - Email: semionaevdokimov@icloud.com / GitHub: [ItsEvdok](https://github.com/ItsEvdok)
