@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    font-family: Verdana;
+    font-family: inherit;
 }
 
 body, html {
@@ -174,12 +174,36 @@ button:hover {
     color: #f5cb5c;
 }
 
+
+
+
+.login,
+.signup,
+.submit {
+    background-color: #bcc7c2;
+    background: linear-gradient(to left, #bcc7c2 50%, #f2d47d 50%) right;
+    background-size: 300%;
+    transition: 1s ease-out;
+}
+
+.forms button:hover {
+    background-position: left;
+}
+
+
+
+
+
+
+
+
+
 a img {
     margin-top: 12px;
 }
 
 .post-list {
-    margin: 0;
+    margin-top: 24px;
     padding: 0;
 }
 
@@ -214,6 +238,10 @@ textarea {
     z-index: 2;
 }
 
+.form-floating {
+    margin-top: 10px;
+}
+
 .form-signin input[type="email"] {
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
@@ -224,6 +252,19 @@ textarea {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+}
+
+.login-form,
+.signup-form {
+    margin-top: 24px;
+    align-items: center;
+    padding: 10px 24px 24px 24px;
+    background-color: #e8eddf;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    box-sizing: border-box;
+
 }
 
 header {
