@@ -54,6 +54,6 @@ If you have any questions about the repo, open an issue or contact one of the ma
 
 ## Contributors
 
-Landon Wilson -
-Ina Wise -
-Semion Evdokimov - semionaevdokimov@icloud.com / ItsEvdok
+- Landon Wilson - / [Landonwilson1](https://github.com/Landonwilson1)
+- Ina Wise - / [InaWise](https://github.com/InaWise)
+- Semion Evdokimov - semionaevdokimov@icloud.com / [ItsEvdok](https://github.com/ItsEvdok)
