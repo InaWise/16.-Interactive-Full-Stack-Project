@@ -42,6 +42,7 @@ async function editProfileHandler(event) {
         body: JSON.stringify({
             bio,
             location,
+            birthday,
         }),
         headers: {
             "Content-Type": "application/json",

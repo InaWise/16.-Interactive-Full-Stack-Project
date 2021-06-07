@@ -40,7 +40,7 @@ router.get("/", withAuth, (req, res) => {
         .then((dbUserData) => {
           if (dbUserData) {
             const user = dbUserData.get({ plain: true });
-            res.render("dashboard", { posts, loggedIn: true, location: user.location ? user.location : "Unknown", Bio: user.bio ? user.bio : "", Username: user.username, Id: user.id, Picture: user.profile_picture });
+            res.render("dashboard", { posts, loggedIn: true, location: user.location ? user.location : "Unknown", Bio: user.bio ? user.bio : "", Username: user.username, Id: user.id, Picture: user.profile_picture, Birthday: user.birthday });
 
           } else {
             res.status(404).end();

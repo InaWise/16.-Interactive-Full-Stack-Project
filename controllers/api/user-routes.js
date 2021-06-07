@@ -142,7 +142,8 @@ router.put("/profile/:id", withAuth, (req, res) => {
   User.update(
     {
       bio: req.body.bio,
-      location: req.body.location
+      location: req.body.location,
+      birthday: req.body.birthday,
     },
     {
       where: {
