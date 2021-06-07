@@ -7,13 +7,15 @@
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
-<article class="post">
-  <div class="title">
-    <a href="/post/{{id}}" target="_blank">{{title}}</a>
-  </div>
-  <div class="meta">
-    Posted by {{user.username}} on {{ format_date created_at}}
-    |
-    <a href="/post/{{id}}">{{comment.length}} {{format_plural "comment" comment.length}}</a>
-  </div>
-</article>
+<a class="posts" href="/post/{{id}}" target="_blank">
+  <article class="post">
+    <div class="title">
+      {{title}}
+    </div>
+    <div class="meta">
+      Posted by {{user.username}} on {{ format_date created_at}}
+      |
+      {{comment.length}} {{format_plural "comment" comment.length}}
+    </div>
+  </article>
+</a>

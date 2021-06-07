@@ -20,6 +20,8 @@ p {
     font-size: large, bold;
 }
 
+
+
 #wrapper {
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
@@ -152,10 +154,23 @@ main {
         margin-right: 0;
     }
 }
-
-a:hover {
-    color: #f5cb5c;
+a {
+    color: black;
+    text-decoration: none;
 }
+.post:hover {
+    transform: scale(1.01);
+}
+
+logout:hover {
+    color: #f2d47d ;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 2px;
+}
+
 
 button {
     background-color: #333533;
@@ -171,15 +186,13 @@ button {
 }
 
 button:hover {
-    color: #f5cb5c;
+    color: #f2d47d ;
 }
-
-
-
 
 .login,
 .signup,
-.submit {
+.submit,
+.create {
     background-color: #bcc7c2;
     background: linear-gradient(to left, #bcc7c2 50%, #f2d47d 50%) right;
     background-size: 300%;
@@ -189,14 +202,6 @@ button:hover {
 .forms button:hover {
     background-position: left;
 }
-
-
-
-
-
-
-
-
 
 a img {
     margin-top: 12px;
@@ -255,7 +260,20 @@ textarea {
 }
 
 .login-form,
-.signup-form {
+.signup-form
+{
+    margin-top: 24px;
+    align-items: center;
+    padding: 10px 24px 24px 24px;
+    background-color: #e8eddf;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    box-sizing: border-box;
+
+}
+
+.post {
     margin-top: 24px;
     align-items: center;
     padding: 10px 24px 24px 24px;
@@ -279,10 +297,26 @@ header h1 {
     font-size: 28px;
 }
 
+h1 {
+    font-size: 64px;
+}
+
+.staybuzzin {
+    border-bottom: 3px solid #f5cb5c;
+}
+
+.staybuzzin:hover {
+    border-bottom: 3px dashed #333533;
+}
+
 main {
     flex: 1;
     padding: 2% 4%;
     border: 1px solid gray;
+}
+
+.username {
+    margin-left: 24px;
 }
 
 .btn-no-style {
@@ -343,6 +377,7 @@ main {
 .comment {
     padding: 1%;
     margin-bottom: 1%;
+    border-radius: 3px;
 }
 
 .comment:nth-child(odd) {
@@ -362,6 +397,10 @@ main {
 
 .edit-post-form {
     margin-bottom: 5%;
+}
+
+.savediv {
+    border-radius: 4px;
 }
 
 .footer {

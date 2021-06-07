@@ -7,12 +7,17 @@
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
-<section>
-  <img src="/images/blank-profile-picture.png" class="rounded-circle img-thumbnail" width="200" height="200"
+<div class="staybuzzin mb-4">
+  <h1>{{Username}}</h1>
+</div>
+
+
+<section class="">
+  <img src="/images/blank-profile-picture.png" class="rounded-circle img-thumbnail mb-2" width="200" height="200"
     id="profile-picture">
 
   <h3>{{Username}}</h3>
-  <div> Bio {{Bio}} </div>
+  <div> Bio: {{Bio}} </div>
   <div>
     {{!-- //Location// --}}
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill"
@@ -20,6 +25,7 @@
       <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
     </svg>
     <span>{{location}}</span>
+    </br>
     {{!-- //birthday// --}}
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3"
       viewBox="0 0 16 16">
@@ -29,23 +35,23 @@
         d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
     </svg>
 
-    <span>Joined date June 2021</span>
-
+    <span>Joined June 2021</span>
+    </br>
     {{!-- //calender// --}}
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gift-fill"
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gift-fill mt-1"
       viewBox="0 0 16 16">
       <path
         d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zm6 4v7.5a1.5 1.5 0 0 1-1.5 1.5H9V7h6zM2.5 16A1.5 1.5 0 0 1 1 14.5V7h6v9H2.5z" />
     </svg>
   </div>
-  <a class="btn btn-primary" href="/dashboard/edit-profile/" role="button">Edit profile</a>
+  <a class="btn btn-primary mt-3 mb-2" href="/dashboard/edit-profile/" role="button">Edit profile</a>
 
 </section>
 
 <section>
   <h2>Create New Post</h2>
 
-  <form class="new-post-form">
+  <form class="new-post-form forms">
     <div class="form-floating mb-3">
       <input id="post-title" name="post-title" type="text" class="form-control">
       <label for="floatingInput"> Title </label>
@@ -54,7 +60,7 @@
       <input id="content" name="content" type="text" class="form-control">
       <label for="floatingContent"> Whats Poppin? </label>
     </div>
-    <button type="submit" class="btn btn-warning">Create</button>
+    <button type="submit" class="btn create mb-2">Create</button>
   </form>
 </section>
 
